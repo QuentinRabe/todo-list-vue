@@ -1,6 +1,6 @@
 <template>
 	<div class="w-full h-screen px-10 mt-5 flex flex-col gap-3 pb-5">
-		<TransitionGroup name="task-transition" class="w-full">
+		<TransitionGroup name="task-transition">
 			<div class="w-full bg-[#322834] flex flex-col gap-1 px-5 py-3 rounded-lg card" v-for="task in sortTasks" :key="task.id">
 				<div class="w-full flex justify-between items-center">
 					<div class="w-[40px] h-[10px] rounded-full" :style="{backgroundColor:task.color}"></div>

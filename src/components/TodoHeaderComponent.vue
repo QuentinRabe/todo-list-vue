@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-	import { onMounted, ref } from 'vue';
+	import { onMounted, onUnmounted, ref } from 'vue';
 	import avatar from '../assets/avatar.jpg'
 
 	const	today = ref(new Date());
@@ -29,5 +29,8 @@
 			hour.value = new Date();
 			formatedTime.value = hour.value.toLocaleTimeString('en-US', hourOptions);
 		}, 1000);
-	})
+	});
+	onUnmounted(() => {
+		clearInterval(interval);
+	});
 </script>

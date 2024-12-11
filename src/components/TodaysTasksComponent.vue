@@ -31,17 +31,24 @@
 					>
 					</circle>
 				</svg>
-				<p class="text-[#ead4f1]">{{ completed }}%</p>
+				<p class="text-[#ead4f1]">{{ props.taskAverage }}%</p>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
-
-	const	completed = ref(40);
+	import { computed } from 'vue';
+	const	props = defineProps({
+		taskAverage: Number,
+	});
 	const	dashOffetValue = computed(() => {
-		return (2 * Math.PI * 20) * (1 - (completed.value / 100));
+		return (2 * Math.PI * 20) * (1 - (props.taskAverage / 100));
 	});
 </script>
+
+<style scoped>
+circle {
+	transition: all 0.8s ease; /* Animation fluide de stroke-dashoffset */
+}
+</style>

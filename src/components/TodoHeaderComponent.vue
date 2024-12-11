@@ -1,13 +1,13 @@
 <template>
-	<div class="w-full flex flex-col px-10 pt-5">
-		<div class="w-full flex justify-between">
+	<div class="w-full flex px-10 pt-5 justify-between items-center">
+		<div class="flex flex-col gap-3 flex-shrink">
 			<p class="text-xl text-[#ead4f1] font-bold">Hey, Quentin</p>
-			<div class="w-[40px] h-[40px] rounded-full bg-center bg-cover" :style="{ backgroundImage: `url(${avatar})` }"></div>
+			<div class="flex space-x-5">
+				<p class="text-xs text-[#ead4f1] ">{{ formatedDate }}</p>
+				<p class="text-xs text-[#ead4f1] ">{{ formatedTime }}</p>
+			</div>
 		</div>
-		<div class="flex space-x-5">
-			<p class="text-xs text-[#ead4f1] ">{{ formatedDate }}</p>
-			<p class="text-xs text-[#ead4f1] ">{{ formatedTime }}</p>
-		</div>
+		<div class="w-[60px] h-[60px] rounded-full bg-center bg-cover" :style="{ backgroundImage: `url(${avatar})` }"></div>
 	</div>
 </template>
 

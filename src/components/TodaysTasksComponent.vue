@@ -5,7 +5,7 @@
 			<div class="w-[45px] h-[45px] relative rounded-full flex justify-center items-center">
 				<svg
 			class="absolute w-full h-full"
-			viewBox="width height"
+			viewBox="0 0 45 45"
 			xmlns="http://www.w3.org/2000/svg"
 				>
 					<circle

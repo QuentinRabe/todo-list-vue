@@ -1,5 +1,5 @@
 <template>
-	<div class="w-1/3 h-[600px] bg-[#3f3241] shadow-lg shadow-black rounded-md flex flex-col items-center overflow-y-scroll">
+	<div class=" w-[90%] lg:w-1/3 sm:w-1/2  h-[600px] bg-[#3f3241] shadow-lg shadow-black rounded-md flex flex-col items-center overflow-y-scroll">
 		<TodoHeaderComponent/>
 		<AddTodoComponent @addTaskEmit="handleAddTaskUpdate"/>
 		<TodaysTasksComponent :taskAverage="checkedTask"/>

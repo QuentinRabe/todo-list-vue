@@ -1,7 +1,7 @@
 <template>
-	<div class=" w-[90%] lg:w-1/3 sm:w-1/2  h-[600px] bg-[#3f3241] shadow-lg shadow-black rounded-md flex flex-col items-center overflow-y-scroll
+	<div class=" w-[90%] lg:w-1/3 sm:w-1/2  h-[85%] bg-[#3f3241] shadow-lg shadow-black rounded-md flex flex-col items-center overflow-y-scroll
 		scrollbar-thin scrollbar-track-[#322834] scrollbar-thumb-[#e6606b]">
-		<TodoHeaderComponent/>
+		<TodoHeaderComponent @updateTime="handleTimeUpdate"/>
 		<AddTodoComponent @addTaskEmit="handleAddTaskUpdate"/>
 		<TodaysTasksComponent :taskAverage="checkedTask"/>
 		<TaskComponent @updateCheckedTask="handleCheckTaskUpdate" :tasks="tasks" @removeTask="handleRemoveTask"/>
@@ -42,6 +42,11 @@
 	const	today = ref(new Date());
 	const	todayOptions = {day: 'numeric', month: 'short', year: 'numeric'};
 	const	formatedDate = ref(today.value.toLocaleDateString('en-US', todayOptions));
+	let		actualTime;
+
+	const	handleTimeUpdate = (value) => {
+		actualTime = value;
+	}
 	const	handleCheckTaskUpdate = (value) => {
 		checkedTask.value = value;
 	}
@@ -52,7 +57,7 @@
 		}
 	};
 	const	handleAddTaskUpdate = (value) => {
-		if (value.length === 0)
+		if (!value)
 			return ;
 		shuffleArray(taskColors);
 		const	newTask = {
@@ -61,6 +66,7 @@
 			state: false,
 			added: formatedDate.value,
 			color: taskColors[0],
+			addedTime: actualTime,
 		};
 		tasks.value.push({...newTask});
 		console.log(`Added`);

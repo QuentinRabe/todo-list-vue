@@ -12,7 +12,7 @@
 				</div>
 				<p class="text-sm text-[#ead4f1] mt-1">{{ task.name }}</p>
 				<div class="w-full flex items-center">
-					<p class="text-xs font-light text-[#ead4f1] italic flex-grow" v-if="task.added === formatedDate">Today</p>
+					<p class="text-xs font-light text-[#ead4f1] italic flex-grow" v-if="task.added === formatedDate">Today {{ task.addedTime }}</p>
 					<p class="text-xs font-light text-[#ead4f1] italic flex-grow" v-else>{{ task.added }}</p>
 					<input type="checkbox" :id="'done-'+task.id" class="hidden peer" :checked="task.state" @click="checkTask(task)">
 					<button class="w-7 h-6 rounded-md border bg-none peer-checked:bg-green-300" >
@@ -28,7 +28,7 @@
 	import { computed, ref, watch, defineEmits } from 'vue';
 
 	const	emit = defineEmits(['updateCheckedTask', 'removeTask']);
-	const	props = defineProps({ tasks: Array, });
+	const	{ tasks } = defineProps({ tasks: Array, });
 	const	today = ref(new Date());
 	const	todayOptions = {day: 'numeric', month: 'short', year: 'numeric'}
 	const	formatedDate = ref(today.value.toLocaleDateString('en-US', todayOptions));
@@ -37,22 +37,23 @@
 		task.state = !task.state;
 	};
 	const	sortTasks = computed(() => {
-		return (props.tasks.sort((a, b) => {
+		const	ascendantSortedTasks = [...tasks].sort((a, b) => a.id > b.id ? -1 : 1);
+		return (ascendantSortedTasks.sort((a, b) => {
 			if (a.state === b.state)
 				return (0);
 			return (a.state ? 1 : -1);
 		}))
 	});
 	const checkedTask = computed(() => {
-		if (props.tasks.length === 0)
+		if (tasks.length === 0)
 			return (0);
-		return (Math.round(([...props.tasks].filter((task) => task.state).length / props.tasks.length) * 100));
+		return (Math.round(([...tasks].filter((task) => task.state).length / tasks.length) * 100));
 	});
 	const	removeTask = (remove) => {
 		const	newArray = [];
-		for(let i = 0; i < props.tasks.length; i++){
-			if (remove.id != props.tasks[i].id)
-				newArray.push(props.tasks[i]);
+		for(let i = 0; i < tasks.length; i++){
+			if (remove.id != tasks[i].id)
+				newArray.push(tasks[i]);
 		}
 		emit('removeTask', newArray);
 	}

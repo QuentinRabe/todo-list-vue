@@ -7,21 +7,21 @@
 				<p class="text-xs text-[#ead4f1] ">{{ formatedTime }}</p>
 			</div>
 		</div>
-		<div class="w-[60px] h-[60px] rounded-full bg-center bg-cover" :style="{ backgroundImage: `url(${avatar})` }"></div>
+		<div class="w-[60px] h-[60px] rounded-full bg-center bg-cover" :style="{ backgroundImage: `url(${avatar})`}"></div>
 	</div>
 </template>
 
 <script setup>
-	import { onMounted, onUnmounted, ref } from 'vue';
+	import { onMounted, onUnmounted, ref, watch } from 'vue';
 	import avatar from '../assets/avatar.jpg'
 
 	const	today = ref(new Date());
 	const	hour = ref(new Date());
-
+	const	emit = defineEmits(['updateTime']);
 	const	todayOptions = {day: 'numeric', month: 'short', year: 'numeric'}
 	const	formatedDate = ref(today.value.toLocaleDateString('en-US', todayOptions));
 	const	hourOptions = {hour: 'numeric', minute: '2-digit', hour12: true};
-	const	formatedTime = ref("")
+	const	formatedTime = ref("");
 
 	let 	interval;
 	onMounted(() => {
@@ -33,4 +33,7 @@
 	onUnmounted(() => {
 		clearInterval(interval);
 	});
+	watch(formatedTime, (newValue) => {
+		emit('updateTime', newValue);
+	})
 </script>

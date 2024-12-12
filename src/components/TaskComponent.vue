@@ -82,4 +82,8 @@
   opacity: 0;
   transform: translateY(-20px);
 }
+.task-transition-move {
+  transition: transform 0.5s ease-in-out;
+}
+
 </style>

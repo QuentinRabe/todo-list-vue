@@ -49,6 +49,6 @@
 
 <style scoped>
 circle {
-	transition: all 0.8s ease; /* Animation fluide de stroke-dashoffset */
+	transition: all 0.7s cubic-bezier(0.68, -0.4, 0.265, 1.55);
 }
 </style>

@@ -64,7 +64,7 @@
 
 <style scoped>
 .task-transition-enter-active, .task-transition-leave-active {
-	transition: all .5s ease-in-out;
+	transition: all 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 .task-transition-enter-from {
 	opacity: 0;
@@ -75,15 +75,15 @@
 	transform: translateY(0);
 }
 .task-transition-leave-from {
-  opacity: 1;
-  transform: translateY(0);
+	opacity: 1;
+	transform: translateY(0);
 }
 .task-transition-leave-to {
-  opacity: 0;
-  transform: translateY(-20px);
+	opacity: 0;
+	transform: translateY(-20px);
 }
 .task-transition-move {
-  transition: transform 0.5s ease-in-out;
+	transition: all 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 </style>

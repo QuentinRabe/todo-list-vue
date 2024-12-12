@@ -2,28 +2,28 @@
 	<div class="w-full px-10 mt-5">
 		<div class="w-full bg-[#322834] flex items-center px-5 py-3 rounded-lg justify-between">
 			<p class="text-lg font-bold text-[#ead4f1]">Today's Tasks</p>
-			<div class="w-[45px] h-[45px] relative rounded-full flex justify-center items-center">
+			<div class="w-[50px] h-[50px] relative rounded-full flex justify-center items-center">
 				<svg
 			class="absolute w-full h-full"
-			viewBox="0 0 45 45"
+			viewBox="0 0 50 50"
 			xmlns="http://www.w3.org/2000/svg"
 				>
 					<circle
-						cx="22.5"
-						cy="22.5"
-						r="20"
+						cx="25"
+						cy="25"
+						r="23"
 						stroke-width="4"
 						stroke="#1c0e20"
 						fill="none"
 					>
 					</circle>
 					<circle
-						cx="22.5"
-						cy="22.5"
-						r="20"
+						cx="25"
+						cy="25"
+						r="23"
 						stroke-width="4"
 						stroke="#ead4f1"
-						:stroke-dasharray="2 * Math.PI * 20"
+						:stroke-dasharray="2 * Math.PI * 23"
 						:stroke-dashoffset="dashOffetValue"
 						stroke-linecap="round"
 						style="transform: rotate(-90deg); transform-origin: center;"
@@ -43,7 +43,7 @@
 		taskAverage: Number,
 	});
 	const	dashOffetValue = computed(() => {
-		return (2 * Math.PI * 20) * (1 - (props.taskAverage / 100));
+		return (2 * Math.PI * 23) * (1 - (props.taskAverage / 100));
 	});
 </script>
 

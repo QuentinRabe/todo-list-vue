@@ -1,5 +1,6 @@
 <template>
-	<div class=" w-[90%] lg:w-1/3 sm:w-1/2  h-[600px] bg-[#3f3241] shadow-lg shadow-black rounded-md flex flex-col items-center overflow-y-scroll">
+	<div class=" w-[90%] lg:w-1/3 sm:w-1/2  h-[600px] bg-[#3f3241] shadow-lg shadow-black rounded-md flex flex-col items-center overflow-y-scroll
+		scrollbar-thin scrollbar-track-[#322834] scrollbar-thumb-[#e6606b]">
 		<TodoHeaderComponent/>
 		<AddTodoComponent @addTaskEmit="handleAddTaskUpdate"/>
 		<TodaysTasksComponent :taskAverage="checkedTask"/>
@@ -47,10 +48,12 @@
 	const shuffleArray = (array) => {
 		for (let i = array.length - 1; i > 0; i--) {
 			const j = Math.floor(Math.random() * (i + 1));
-			[array[i], array[j]] = [array[j], array[i]]; // Échange les éléments
+			[array[i], array[j]] = [array[j], array[i]];
 		}
 	};
 	const	handleAddTaskUpdate = (value) => {
+		if (value.length === 0)
+			return ;
 		shuffleArray(taskColors);
 		const	newTask = {
 			id: Date.now(),
